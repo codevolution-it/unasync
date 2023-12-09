@@ -5,12 +5,7 @@ class TestImplementation:
         self.s = "UTF-8: ❄"
 
     def get_a_b(self):
-        # fmt: off
-        s = "a is %s b is %s" % \
-            (self.a,
-             self.b)
-        # fmt: on
-        return s
+        return f"a is {self.a} b is {self.b}"
 
     def f(self):
         return 1

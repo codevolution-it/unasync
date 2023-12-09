@@ -57,11 +57,14 @@ class Rule:
         if len_from_segments > len(file_segments):
             return False
 
-        for i in range(len(file_segments) - len_from_segments + 1):
-            if file_segments[i : i + len_from_segments] == from_segments:
-                return len_from_segments, i
-
-        return False
+        return next(
+            (
+                (len_from_segments, i)
+                for i in range(len(file_segments) - len_from_segments + 1)
+                if file_segments[i : i + len_from_segments] == from_segments
+            ),
+            False,
+        )
 
     def _unasync_file(self, filepath):
         with open(filepath, "rb") as f:
@@ -105,9 +108,8 @@ class Rule:
     def _unasync_name(self, name):
         if name in self.token_replacements:
             return self.token_replacements[name]
-        # Convert classes prefixed with 'Async' into 'Sync'
         elif len(name) > 5 and name.startswith("Async") and name[5].isupper():
-            return "Sync" + name[5:]
+            return f"Sync{name[5:]}"
         return name
 
 

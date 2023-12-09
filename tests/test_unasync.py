@@ -66,7 +66,7 @@ def test_unasync_files(tmpdir):
 def test_build_py_modules(tmpdir):
 
     source_modules_dir = os.path.join(TEST_DIR, "example_mod")
-    mod_dir = str(tmpdir) + "/" + "example_mod"
+    mod_dir = f"{str(tmpdir)}/example_mod"
     shutil.copytree(source_modules_dir, mod_dir)
 
     env = copy.copy(os.environ)
@@ -86,7 +86,7 @@ def test_build_py_modules(tmpdir):
 def test_build_py_packages(tmpdir):
 
     source_pkg_dir = os.path.join(TEST_DIR, "example_pkg")
-    pkg_dir = str(tmpdir) + "/" + "example_pkg"
+    pkg_dir = f"{str(tmpdir)}/example_pkg"
     shutil.copytree(source_pkg_dir, pkg_dir)
 
     env = copy.copy(os.environ)
@@ -103,7 +103,7 @@ def test_build_py_packages(tmpdir):
 def test_project_structure_after_build_py_packages(tmpdir):
 
     source_pkg_dir = os.path.join(TEST_DIR, "example_pkg")
-    pkg_dir = str(tmpdir) + "/" + "example_pkg"
+    pkg_dir = f"{str(tmpdir)}/example_pkg"
     shutil.copytree(source_pkg_dir, pkg_dir)
 
     env = copy.copy(os.environ)
@@ -123,7 +123,7 @@ def test_project_structure_after_build_py_packages(tmpdir):
 def test_project_structure_after_customized_build_py_packages(tmpdir):
 
     source_pkg_dir = os.path.join(TEST_DIR, "example_custom_pkg")
-    pkg_dir = str(tmpdir) + "/" + "example_custom_pkg"
+    pkg_dir = f"{str(tmpdir)}/example_custom_pkg"
     shutil.copytree(source_pkg_dir, pkg_dir)
 
     env = copy.copy(os.environ)
